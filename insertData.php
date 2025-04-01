@@ -30,5 +30,10 @@
         if($result) echo "Thank you for feedback";
         else echo "Error";      
         ?>
+
+        <br>
+        <a href="http://localhost/myweb/hello.html">Main Menu</a>
+        <a href="http://localhost/myweb/feedback.php">Send more feedback</a>
+
     </body>
 </html>
