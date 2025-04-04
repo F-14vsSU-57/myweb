@@ -19,11 +19,13 @@
         <br>
         <?php
         require('dbconnect.php');
+        date_default_timezone_set("Asia/Bangkok");
 
         $name = $_POST["name"];
         $feedback = $_POST["feedback"];
+        $time = date("Y/m/d H:i:s");
 
-        $sql = "INSERT INTO feedback(name,feedback) VALUES('$name','$feedback')";
+        $sql = "INSERT INTO feedback(name,feedback,time) VALUES('$name','$feedback','$time')";
 
         $result = mysqli_query($con,$sql);
 
