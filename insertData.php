@@ -11,12 +11,6 @@
         </style>
     </head>
         <body>
-        <a href="http://localhost/myweb/hello.html">Hello</a>
-        <a href="http://localhost/myweb/myprofile.html">My Profile</a>
-        <a href="http://localhost/myweb/myinterest.html">My Interest</a>
-        <a href="http://localhost/myweb/myskill.html">My Skill</a>
-        <a href="http://localhost/myweb/feedback.php" style="color:red;">Feedback</a>
-        <br>
         <?php
         require('dbconnect.php');
         date_default_timezone_set("Asia/Bangkok");
@@ -32,10 +26,6 @@
         if($result) echo "Thank you for feedback";
         else echo "Error";      
         ?>
-
-        <br>
-        <a href="http://localhost/myweb/hello.html">Main Menu</a>
-        <a href="http://localhost/myweb/feedback.php">Send more feedback</a>
-
+    <meta http-equiv="refresh" content="1; url=feedback.php">
     </body>
 </html>

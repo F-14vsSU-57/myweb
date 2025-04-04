@@ -12,14 +12,18 @@
                 border: 1px solid black;
                 text-align:center;
             }
+            table {
+                margin-left: auto;
+                margin-right: auto;
+            }
         </style>
     </head>
         <body>
-        <a href="http://localhost/myweb/hello.html">Hello</a>
-        <a href="http://localhost/myweb/myprofile.html">My Profile</a>
-        <a href="http://localhost/myweb/myinterest.html">My Interest</a>
-        <a href="http://localhost/myweb/myskill.html">My Skill</a>
-        <a href="http://localhost/myweb/feedback.php" style="color:red;">Feedback</a>
+        <a href="hello.html">Hello</a>
+	    <a href="myprofile.html">My Profile</a>
+	    <a href="myinterest.html">My Interest</a>
+	    <a href="myskill.html">My Skill</a>
+	    <a href="feedback.php">Feedback</a>
         <table style="width:95%">
             <tr>
                 <th style="width: 10%">Name</th>
@@ -28,11 +32,9 @@
             </tr>
             <?php
                 require('dbconnect.php');
-
-                $sql = "SELECT * FROM feedback";
-                $result = mysqli_query($con,$sql);
+                $result = $con->query("SELECT * FROM feedback ORDER BY time DESC");
                 $count = mysqli_num_rows($result);
-
+                if ($count >= 10) $count = 10;
                 for($i=0;$i<$count;$i++){
                     $row = mysqli_fetch_row($result);
                     echo "<tr>";
@@ -43,8 +45,6 @@
                 }
             ?>
         <table>
-        <a href="http://localhost/myweb/hello.html">Main Menu</a>
-        <br>
         <a href="http://localhost/myweb/feedback.php">Send feedback</a>
 
     </body>

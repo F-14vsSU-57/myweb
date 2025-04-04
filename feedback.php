@@ -8,14 +8,22 @@
                 text-align:center;
                 color:magenta;
             }
+            table, th ,td {
+                border: 1px solid black;
+                text-align:center;
+            }
+            table {
+                margin-left: auto;
+                margin-right: auto;
+            }
         </style>
     </head>
     <body>
-        <a href="http://localhost/myweb/hello.html">Hello</a>
-        <a href="http://localhost/myweb/myprofile.html">My Profile</a>
-        <a href="http://localhost/myweb/myinterest.html">My Interest</a>
-        <a href="http://localhost/myweb/myskill.html">My Skill</a>
-        <a href="http://localhost/myweb/feedback.php" style="color:red;">Feedback</a>
+    <a href="hello.html">Hello</a>
+	    <a href="myprofile.html">My Profile</a>
+	    <a href="myinterest.html">My Interest</a>
+	    <a href="myskill.html">My Skill</a>
+	    <a href="feedback.php" style="color:red;">Feedback</a>
         <br>
         <div class="container my-3">
             <h2 class="text-center" style="color:green;">Feedback</h2>
@@ -30,9 +38,27 @@
                 </div>
                 <input type="submit" value="Submit" class="btn btn-success">   
         </div>
-        <?php
-            date_default_timezone_set("Asia/Bangkok");
-            echo date("Y/m/d H:i:s");
-        ?>
+        <table style="width:95%">
+            <tr>
+                <th style="width: 10%">Name</th>
+                <th style="width: 70%">Feedback</th>
+                <th style="width: 20%">Time</th>
+            </tr>
+            <?php
+                require('dbconnect.php');
+                $result = $con->query("SELECT * FROM feedback ORDER BY time DESC");
+                $count = mysqli_num_rows($result);
+                if ($count >= 10) $count = 10;
+                for($i=0;$i<$count;$i++){
+                    $row = mysqli_fetch_row($result);
+                    echo "<tr>";
+                    echo "<td>".$row[0]."</td>";
+                    echo "<td style='text-align:left; padding-left:10px'>".$row[1]."</td>";
+                    echo "<td>".$row[2]."</td>";
+                    echo "</tr>";
+                }
+            ?>
+        <table>
+        <a href="http://localhost/myweb/showData.php">See all feedback</a>
     </body>
 </html>
