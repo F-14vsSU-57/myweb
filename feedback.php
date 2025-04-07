@@ -17,6 +17,9 @@
                 margin-left: auto;
                 margin-right: auto;
             }
+            body {
+                background-image: url('f-14(6).jpg');
+            }
         </style>
     </head>
     <body>

@@ -17,6 +17,9 @@
                 margin-left: auto;
                 margin-right: auto;
             }
+            body {
+                background-image: url('f14(6).jpg');
+            }
         </style>
     </head>
         <body>
@@ -43,7 +46,6 @@
                     require('dbconnect.php');
                     $result = $con->query("SELECT * FROM feedback ORDER BY time DESC");
                     $count = mysqli_num_rows($result);
-                    if ($count >= 10) $count = 10;
                     for($i=0;$i<$count;$i++){
                         $row = mysqli_fetch_row($result);
                         echo "<tr>";
