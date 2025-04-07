@@ -8,6 +8,26 @@
             h1,h2 {
                 color: rebeccapurple;
             }
+            progress {
+                width: 200px;
+                height: 10px;
+                appearance: none;
+            }
+            progress::-webkit-progress-bar {
+                background-color: #eee;
+                border-radius: 10px;
+            }
+
+            progress::-webkit-progress-value {
+                background-color: purple;
+                border-radius: 10px;
+            }
+
+            progress::-moz-progress-bar {
+                background-color: purple;
+                border-radius: 10px;
+            }
+
         </style>
     </head>
     <body>
@@ -29,19 +49,19 @@
 
         <h2>Programming:</h2>
         <ul>
-            <li><h3 style="color: green">Python : 5 / 10</h3></li>
-            <li><h3 style="color: orange">Java : 4 / 10</h3></li>
-            <li><h3 style="color: orangered">HTML & CSS : 2 / 10</h3></li>
-            <li><h3 style="color: orangered">PHP : 2 / 10</h3></li>
-            <li><h3 style="color: orangered">C : 2 / 10</h3></li>
-            <li><h3 style="color: red">Javascript : 1 / 10</h3></li>
+            <li><h3 style="color: green">Python : 5 / 10</h3><progress value="5" max="10"></progress></li>
+            <li><h3 style="color: orange">Java : 4 / 10</h3><progress value="4" max="10"></progress></li>
+            <li><h3 style="color: orangered">HTML & CSS : 2 / 10</h3><progress value="2" max="10"></progress></li>
+            <li><h3 style="color: orangered">PHP : 2 / 10</h3><progress value="2" max="10"></progress></li>
+            <li><h3 style="color: orangered">C : 2 / 10</h3><progress value="2" max="10"></progress></li>
+            <li><h3 style="color: red">Javascript : 1 / 10</h3><progress value="1" max="10"></progress></li>
         </ul>
 
         <br>
         
         <h2>Microcontroller:</h2>
         <ul>
-            <li><h3 style="color: green">Arduino : 5 / 10</h3></li>
+            <li><h3 style="color: green">Arduino : 5 / 10</h3><progress value="5" max="10"></progress></li>
         </ul>
     </body>
 </html>

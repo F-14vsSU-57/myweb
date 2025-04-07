@@ -68,6 +68,6 @@
                 }
             ?>
         <table>
-        <a href="http://localhost/myweb/showData.php">See all feedback</a>
+        <a href="showData.php">See all feedback</a>
     </body>
 </html>

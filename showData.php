@@ -54,7 +54,7 @@
                     }
                 ?>
             </table>
-            <a href="http://localhost/myweb/feedback.php">Send feedback</a>
+            <a href="feedback.php">Send feedback</a>
 
     </body>
 </html>
