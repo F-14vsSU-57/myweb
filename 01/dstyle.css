@@ -1,9 +1,17 @@
 h1,h2 {
     margin-top: 30px;
     font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-left: 8px;
 }
 h3 {
     font-weight:normal;
+    width: 300px;
+    padding-top: 4px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    border-radius: 12px;
 }
 img {
     max-width: 100%;
@@ -14,5 +22,5 @@ body {
     background-size: cover;
 }
 table {
-    background-color: rgb(0, 169, 113);
+    background-color: rgb(0, 255, 170);
 }

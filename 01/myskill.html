@@ -7,11 +7,16 @@
         <style>
             h1,h2 {
                 color: rebeccapurple;
+                background-color: rgba(0, 255, 170, 0.65);
+            }
+            h3 {
+                background-color: rgba(255, 255, 255, 0.65);
             }
             progress {
                 width: 200px;
                 height: 10px;
                 appearance: none;
+                margin-bottom: 20px;
             }
             progress::-webkit-progress-bar {
                 background-color: #eee;
@@ -64,6 +69,7 @@
         <h2>Microcontroller:</h2>
         <ul>
             <li><h3 style="color: green">Arduino : 5 / 10</h3><progress value="5" max="10"></progress></li>
+            <li><h3 style="color: red">ESP8266 : 1 / 10</h3><progress value="1" max="10"></progress></li>
         </ul>
     </body>
 </html>

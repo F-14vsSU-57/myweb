@@ -5,21 +5,33 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="dstyle.css">
         <style>
-            h1{
+            h2{
                 text-align:center;
-                color:blue;
+                color: rgb(0, 255, 213);
+                background-color: rgba(195, 0, 255, 0.59);
+                border-radius: 12px;
             }
             table, th ,td {
                 border: 1px solid black;
-                text-align:center;
+                text-align: center;
             }
             table {
                 margin-left: auto;
                 margin-right: auto;
+                margin-top: 75px;
             }
             body {
                 background-image: url('f-14(6).jpg');
             }
+            .text {
+                background-color: rgba(0, 255, 13, 0.59);
+                width: 180px;
+                padding-left: 12px;
+                padding-bottom:  4px;
+                padding-top: 2px;
+                border-radius: 8px;
+            }
+
         </style>
     </head>
     <body>
@@ -38,15 +50,15 @@
         </nav>
         <br>
         <div class="container my-3">
-            <h2 class="text-center" style="color:blue;">Feedback</h2>
+            <h2 class="text-center">Feedback</h2>
             <form action="insertData.php" method="POST">
                 <div>
-                    <label for="">Name</label>
-                    <input type="text" name="name" id="">
+                    <label for=""><h4 class="text">Name<h4></label>
+                    <input type="text" name="name" id="" class="form-control">
                 </div>
                 <div>
-                    <label for="">Feedback</label>
-                    <input type="text" name="feedback" id="" class="form-control">
+                    <label for=""><h4 class="text">Feedback<h4></label>
+                    <input type="text" name="feedback" id="" class="form-control" style="width: 500px;">
                 </div>
                 <input type="submit" value="Submit" class="btn btn-success">   
         </div>
