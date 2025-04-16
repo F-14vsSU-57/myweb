@@ -35,15 +35,15 @@
         </style>
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
               <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-left">
-                  <li class="nav-item"><a class="nav-link text-gray" href="\myweb\index.html">&lt;&lt;&lt;</a></li>
-                  <li class="nav-item"><a class="nav-link text-gray" href="hello.html">Hello</a></li>
-                  <li class="nav-item"><a class="nav-link text-gray" href="myprofile.html">My Profile</a></li>
-                  <li class="nav-item"><a class="nav-link text-gray" href="myinterest.html">My Interest</a></li>
-                  <li class="nav-item"><a class="nav-link text-gray" href="myskill.html">My Skill</a></li>
+                  <li class="nav-item"><a class="nav-link text-secondary" href="../">&lt;&lt;&lt;</a></li>
+                  <li class="nav-item"><a class="nav-link text-secondary" href="hello.html">Hello</a></li>
+                  <li class="nav-item"><a class="nav-link text-secondary" href="myprofile.html">My Profile</a></li>
+                  <li class="nav-item"><a class="nav-link text-secondary" href="myinterest.html">My Interest</a></li>
+                  <li class="nav-item"><a class="nav-link text-secondary" href="myskill.html">My Skill</a></li>
                   <li class="nav-item"><a class="nav-link text-white" href="feedback.php">Feedback</a></li>
                 </ul>
               </div>
