@@ -1,0 +1,56 @@
+h1 {
+    color: rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.7);
+    margin-top: 15px;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+h2 {
+    background-color: rgb(0, 255, 157);
+    margin-left: 15px;
+    font-weight: bold;
+    margin-top: 30px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 15px;
+    border-radius: 12px;
+    width: 400px;
+}
+h3 {
+    color: rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-top: 5px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+body { 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.btn-primary {
+    margin-left: 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 15px;
+    width: 250px;
+    height: 60px;
+}
+.btn-text {
+    background-color: rgba(255, 255, 255, 0);
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.btn-secondary {
+    margin-left: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    width: 75px;
+    height: 40px;
+}
