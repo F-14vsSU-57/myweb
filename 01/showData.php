@@ -4,6 +4,7 @@
         <title>Feedback</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="dstyle.css">
+        <link rel="stylesheet" href="buttonstyle.css">
         <style>
             h1{
                 text-align:center;
@@ -18,7 +19,7 @@
                 margin-right: auto;
             }
             body {
-                background-image: url('f14(6).jpg');
+                background-image: url('vr-f-14(2).jpg');
             }
         </style>
     </head>
@@ -57,7 +58,10 @@
                     }
                 ?>
             </table>
-            <a href="feedback.php">Send feedback</a>
-
+            <div class="d-flex justify-content-center">
+                <a href="feedback.php">
+                    <button class="btn btn-primary"><h3>Send feedback</h3></button>
+                </a>
+            </div>
     </body>
 </html>

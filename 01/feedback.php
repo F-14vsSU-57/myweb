@@ -2,8 +2,10 @@
 <html lang="en">
     <head>
         <title>Feedback</title>
+        <link rel="stylesheet" href="buttonstyle.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="dstyle.css">
+        
         <style>
             h2{
                 text-align:center;
@@ -61,7 +63,8 @@
                     <label for=""><h4 class="text">Feedback<h4></label>
                     <input type="text" name="feedback" id="" class="form-control" style="width: 500px;">
                 </div>
-                <input type="submit" value="Submit" class="btn btn-success">   
+                <input type="submit" value="Submit" class="btn btn-success">
+            </form>  
         </div>
         <table style="width:95%">
             <tr>
@@ -84,6 +87,10 @@
                 }
             ?>
         <table>
-        <a href="showData.php">See all feedback</a>
+        <div class="d-flex justify-content-center">
+            <a href="showData.php">
+                <button class="btn btn-primary"><h3>View all feedback</h3></button>
+            </a>
+        </div>
     </body>
 </html>
