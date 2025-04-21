@@ -26,7 +26,14 @@
         <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-              <div class="collapse navbar-collapse">
+              
+              <!-- Toggler button for mobile -->
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+          
+              <!-- Collapsible nav links -->
+              <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav ms-left">
                   <li class="nav-item"><a class="nav-link text-secondary" href="../">&lt;&lt;&lt;</a></li>
                   <li class="nav-item"><a class="nav-link text-secondary" href="hello.html">Hello</a></li>
@@ -63,5 +70,6 @@
                     <button class="btn btn-primary"><h3>Send feedback</h3></button>
                 </a>
             </div>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
