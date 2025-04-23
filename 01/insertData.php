@@ -1,3 +1,17 @@
+<?php
+function getUserIP() {
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        // IP from shared internet
+        return $_SERVER['HTTP_CLIENT_IP'];
+    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        // IP passed from proxy
+        return $_SERVER['HTTP_X_FORWARDED_FOR'];
+    } else {
+        // Regular IP address
+        return $_SERVER['REMOTE_ADDR'];
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -36,13 +50,20 @@
                 require('dbconnect.php');
                 date_default_timezone_set("Asia/Bangkok");
 
+                $result = $con->query("SELECT * FROM feedback ORDER BY time DESC");
+
+                if ($result && $result->num_rows === 0) $no = 1; 
+                else $no = mysqli_fetch_row($result)[0]+1;
                 $name = $_POST["name"];
                 $feedback = $_POST["feedback"];
                 $time = date("Y/m/d H:i:s");
+                $ip = getUserIP();
 
-                $sql = "INSERT INTO feedback(name,feedback,time) VALUES('$name','$feedback','$time')";
+                $sql = "INSERT INTO feedback(no,name,feedback,ip,time) VALUES('$no','$name','$feedback','$ip','$time')";
 
                 $result = mysqli_query($con,$sql);
+
+                
 
                 if($result) echo "<h1>Thank you for feedback<h1>";
                 else echo "<h1>Error<h1>";      

@@ -45,29 +45,34 @@
               </div>
             </div>
         </nav>
-            <table style="width:95%; margin: 30px">
-                <tr>
-                    <th style="width: 10%">Name</th>
-                    <th>Feedback</th>
-                    <th style="width: 20%">Time</th>
-                </tr>
-                <?php
-                    require('dbconnect.php');
-                    $result = $con->query("SELECT * FROM feedback ORDER BY time DESC");
-                    $count = mysqli_num_rows($result);
-                    for($i=0;$i<$count;$i++){
-                        $row = mysqli_fetch_row($result);
-                        echo "<tr>";
-                        echo "<td>".$row[0]."</td>";
-                        echo "<td style='text-align:left; padding-left:10px'>".$row[1]."</td>";
-                        echo "<td>".$row[2]."</td>";
-                        echo "</tr>";
-                    }
-                ?>
-            </table>
+        <br>
+        <br>
+        <table style="width:95%">
+            <tr>
+                <th style="width: 5%">No.</th>
+                <th style="width: 10%">Name</th>
+                <th style="width: 70%">Feedback</th>
+                <th style="width: 15%">Time</th>
+            </tr>
+            <?php
+                require('dbconnect.php');
+                $result = $con->query("SELECT * FROM feedback ORDER BY time DESC");
+                $count = mysqli_num_rows($result);
+                if ($count >= 10) $count = 10;
+                for($i=0;$i<$count;$i++){
+                    $row = mysqli_fetch_row($result);
+                    echo "<tr>";
+                    echo "<td>".$row[0]."</td>";
+                    echo "<td>".$row[1]."</td>";
+                    echo "<td style='text-align:left; padding-left:10px'>".$row[2]."</td>";
+                    echo "<td>".$row[4]."</td>";
+                    echo "</tr>";
+                }
+            ?>
+        <table>
             <div class="d-flex justify-content-center">
                 <a href="feedback.php">
-                    <button class="btn btn-primary"><h3>Send feedback</h3></button>
+                    <button class="btn btn-primary"><h3>Go send feedback</h3></button>
                 </a>
             </div>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -75,9 +75,10 @@
         </div>
         <table style="width:95%">
             <tr>
+                <th style="width: 5%">No.</th>
                 <th style="width: 10%">Name</th>
                 <th style="width: 70%">Feedback</th>
-                <th style="width: 20%">Time</th>
+                <th style="width: 15%">Time</th>
             </tr>
             <?php
                 require('dbconnect.php');
@@ -88,8 +89,9 @@
                     $row = mysqli_fetch_row($result);
                     echo "<tr>";
                     echo "<td>".$row[0]."</td>";
-                    echo "<td style='text-align:left; padding-left:10px'>".$row[1]."</td>";
-                    echo "<td>".$row[2]."</td>";
+                    echo "<td>".$row[1]."</td>";
+                    echo "<td style='text-align:left; padding-left:10px'>".$row[2]."</td>";
+                    echo "<td>".$row[4]."</td>";
                     echo "</tr>";
                 }
             ?>
