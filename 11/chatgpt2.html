@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Aircraft Info</title>
+</head>
+<body>
+
+<button onclick="getAircraftData()">Get Aircraft Info</button>
+
+<div id="output"></div>
+
+<script>
+  function getAircraftData() {
+    fetch("https://api.adsbdb.com/v0/aircraft/G-AYSX")
+      .then(response => response.json())
+      .then(data => {
+        const aircraft = data.response.aircraft;
+
+        // Build output
+        const outputHTML = `
+          <h2>${aircraft.type}</h2>
+          <p><strong>Registration:</strong> ${aircraft.registration}</p>
+          <p><strong>Country:</strong> ${aircraft.registered_owner_country_name}</p>
+          <p><strong>Owner:</strong> ${aircraft.registered_owner}</p>
+          <img src="${aircraft.url_photo_thumbnail}" alt="Aircraft photo">
+        `;
+
+        document.getElementById("output").innerHTML = outputHTML;
+      })
+      .catch(error => {
+        document.getElementById("output").innerText = "Error: " + error;
+      });
+  }
+</script>
+
+</body>
+</html>

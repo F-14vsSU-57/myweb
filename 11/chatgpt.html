@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fetch on Submit</title>
+</head>
+<body>
+
+<form id="myForm">
+  <input type="text" id="myInput" name="query" placeholder="Enter something">
+  <button type="submit">Submit</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+  document.getElementById("myForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // prevent page reload
+
+    const query = document.getElementById("myInput").value;
+
+    // Example: fetch from a fake API endpoint (replace with real URL)
+    fetch("https://api.adsbdb.com/v0/aircraft/" + encodeURIComponent(query))
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("result").innerText = JSON.stringify(data, null, 2);
+      })
+      .catch(error => {
+        document.getElementById("result").innerText = "Error: " + error;
+      });
+  });
+</script>
+
+</body>
+</html>
