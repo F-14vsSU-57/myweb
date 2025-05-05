@@ -76,7 +76,7 @@
             <h1 class="text-center">Aircraft Database (with API)</h1>
             <form id="search">
                 <!-- <label for=""><h4 class="text-center">Select Database<h4></label> -->
-                <label for=""><h4 class="text-center">Open for Beta<h4></label>
+                <label for=""><h4 class="text-center">Open Beta Available<h4></label>
                 <label for=""><h4 class="text-center">Aircraft Search<h4></label>
                 <div class="text-left">
                     <!-- <input type="radio" name="select" id="aircraft" value="aircraft" onclick="changePlaceholder('Mode S/Registration')">
@@ -89,6 +89,18 @@
                     <label for="">Airline Search</label> -->
                     <input type="text" name="input" id="user-input" class="form-control" placeholder="Mode S/Registration" >
                     <input type="submit" value="Search" class="btn btn-success">
+                    
+                </div>
+                <div class="text-left">
+                    <br>
+                    Sample text:<br><br>
+                        - 36964<br>
+                        - FA-69<br>
+                        - 69<br>
+                        - D-EATH<br>
+                        - F-BRUH<br>
+                        - G-BEOL<br>
+                        - G-AYSX<br>
                 </div>
             </form>  
         </div>
@@ -112,8 +124,8 @@
                         <h2>${aircraft.type}</h2>
                         <h5><strong>Registration:</strong> ${aircraft.registration}</h5>
                     </div>
-                    <h6><strong>Country:</strong> ${aircraft.registered_owner_country_name}<h6>
-                    <p><strong>Owner:</strong> ${aircraft.registered_owner}</p><h6>
+                    <h6><strong>Country:</strong> ${aircraft.registered_owner_country_name}</h6>
+                    <h6><p><strong>Owner:</strong> ${aircraft.registered_owner}</p></h6>
                     `;
         
                     document.getElementById("output").innerHTML = outputHTML;
