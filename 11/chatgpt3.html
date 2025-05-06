@@ -1,0 +1,20 @@
+<form id="myForm">
+    <label><input type="radio" name="color" value="red"> Red</label><br>
+    <label><input type="radio" name="color" value="green"> Green</label><br>
+    <label><input type="radio" name="color" value="blue"> Blue</label><br>
+    <button type="button" onclick="getSelectedRadio()">Submit</button>
+</form>
+  
+<p id="result"></p>
+
+<script>
+    function getSelectedRadio() {
+      const selected = document.querySelector('input[name="color"]:checked');
+      if (selected) {
+        document.getElementById("result").textContent = "Selected color: " + selected.value;
+      } else {
+        document.getElementById("result").textContent = "No color selected.";
+      }
+    }
+</script>
+    

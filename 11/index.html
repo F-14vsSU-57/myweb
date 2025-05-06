@@ -29,15 +29,20 @@
             }
             h5 , h6 {
                 color: rgb(0, 0, 0);
-                background-color: rgba(255, 255, 255, 0.65);
+                background-color: rgba(255, 255, 255, 0.75);
                 margin-top: 10px;
                 padding-top: 5px;
                 padding-bottom: 7px;
-                width: 25%;
                 border-radius: 10px;
             }
             h5 {
-                margin-left: 37.5%;
+                margin-left: 45%;
+                width: 10%;
+            }
+            h6 {
+                width: 25%;
+                margin-left: 5%;
+                padding: 1%;
             }
             body {
                 background-image: url("F-16\ \(Realn\'t\).png");
@@ -54,86 +59,151 @@
                 margin-top: 10px;
             }
             .result {
-                background-color: rgba(255, 255, 255, 0.5);
+                background-color: rgba(255, 255, 255, 0.75);
             }
             img {
                 width: 500px;
                 border-radius: 10px;
                 margin-top: 25px;
             }
-        </style>
-        <script>
-            function changePlaceholder(newText) {
-                document.getElementById("user-input").placeholder = newText;
+            .search-bar {
+                background-color: rgba(255, 255, 255, 0.75);
+                padding-left: 15px;
             }
-        </script>
+            .search-bar-input {
+                padding-bottom: 10px;
+            }
+        </style>
+        <script type="text/javascript" src="radio_button_handler.js"></script>
     </head>
     <body>
         <a href="../">
             <button class="btn btn-secondary"><h7>&lt;&lt;&lt;</h7></button>
         </a>
         <div class="container my-3 text-center">
-            <h1 class="text-center">Aircraft Database (with API)</h1>
+            <h1 class="text-center">Aircraft Database</h1>
             <form id="search">
-                <!-- <label for=""><h4 class="text-center">Select Database<h4></label> -->
-                <label for=""><h4 class="text-center">Open Beta Available<h4></label>
-                <label for=""><h4 class="text-center">Aircraft Search<h4></label>
-                <div class="text-left">
-                    <!-- <input type="radio" name="select" id="aircraft" value="aircraft" onclick="changePlaceholder('Mode S/Registration')">
-                    <label for="">Aircraft Search</label>
-                    <br>
-                    <input type="radio" name="select" id="flightroute" value="flightroute" onclick="changePlaceholder('Callsign')">
-                    <label for="">Flightroute Search</label>
-                    <br>
-                    <input type="radio" name="select" id="airline" value="airline" onclick="changePlaceholder('Airline code')">
-                    <label for="">Airline Search</label> -->
-                    <input type="text" name="input" id="user-input" class="form-control" placeholder="Mode S/Registration" >
-                    <input type="submit" value="Search" class="btn btn-success">
-                    
+                <div class="d-flex align-items-center flex-wrap gap-3 justify-content-center search-bar">
+                    <!-- Radio buttons -->
+                    <div class="d-flex flex-row">
+                        <div>
+                            <input type="radio" name="select" value="aircraft" onclick="changePlaceholder('Mode S/Registration')" checked>
+                            <label>Aircraft Search</label>
+                        </div>
+                        <!-- <div>
+                            <input type="radio" name="select" value="flightroute" onclick="changePlaceholder('Callsign')">
+                            <label>Flightroute Search</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="select" value="airline" onclick="changePlaceholder('Airline code')">
+                            <label>Airline Search</label>
+                        </div> -->
+                    </div>
+            
+                    <!-- Search input and button -->
+                    <div class="d-flex search-bar-input ">
+                        <input type="text" name="input" id="user-input" class="form-control me-2" placeholder="Mode S/Registration">
+                        <input type="submit" value="Search" class="btn btn-success">
+                    </div>
                 </div>
-                <div class="text-left">
-                    <br>
-                    Sample text:<br><br>
-                        - 36964<br>
-                        - FA-69<br>
-                        - 69<br>
-                        - D-EATH<br>
-                        - F-BRUH<br>
-                        - G-BEOL<br>
-                        - G-AYSX<br>
-                </div>
-            </form>  
+            </form>
         </div>
-        <div id="output" class="result"></div>
+        <div id="output" class="result">
+            <form id="search-sample">
+                <div class="d-flex align-items-center flex-wrap gap-3 justify-content-center">
+                    <!-- Radio buttons -->
+                    <div class="d-flex flex-colum text-center">
+                        <div>
+                            Sample:
+                            <input type="radio" name="sample" value="36964" checked>
+                            <label>36964</label>
+                            <input type="radio" name="sample" value="69">
+                            <label>69</label>
+                            <input type="radio" name="sample" value="FA-69">
+                            <label>FA-69</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="sample" value="D-EATH">
+                            <label>D-EATH</label>
+                            <input type="radio" name="sample" value="F-BRUH">
+                            <label>F-BRUH</label>
+                            <input type="radio" name="sample" value="G-BEOL">
+                            <label>G-BEOL</label>
+                            <input type="submit" value="search">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        Database by adsbdb API
         <script>
             document.getElementById("search").addEventListener("submit", function(event) {
-                event.preventDefault(); // prevent page reload
-        
-                const query = document.getElementById("user-input").value;
-                fetch("https://api.adsbdb.com/v0/aircraft/" + encodeURIComponent(query))
-                .then(response => response.json())
-                .then(data => {
-                    const aircraft = data.response.aircraft;
-        
-                    // Build output
-                    const outputHTML = `
-                    <div class="text-center">
-                        <img src="${aircraft.url_photo_thumbnail}" alt="Aircraft photo not avalable">
-                    </div>
-                    <div class="text-center">
-                        <h2>${aircraft.type}</h2>
-                        <h5><strong>Registration:</strong> ${aircraft.registration}</h5>
-                    </div>
-                    <h6><strong>Country:</strong> ${aircraft.registered_owner_country_name}</h6>
-                    <h6><p><strong>Owner:</strong> ${aircraft.registered_owner}</p></h6>
-                    `;
-        
-                    document.getElementById("output").innerHTML = outputHTML;
-                })
-                .catch(error => {
-                    document.getElementById("output").innerText = "Error: " + error;
-                });
+                search(null, event);
             });
+            document.getElementById("search-sample").addEventListener("submit", function(event) {
+                search(document.querySelector('input[name="sample"]:checked'), event);
+            });
+            function search(sample,event) {
+                event.preventDefault(); // prevent page reload
+                let query = document.getElementById("user-input").value;
+                if (sample != null) query = sample.value;
+                const selected = document.querySelector('input[name="select"]:checked');
+                console.log(selected);
+                if (selected.value === 'aircraft') {
+                    fetch("https://api.adsbdb.com/v0/aircraft/" + encodeURIComponent(query))
+                    .then(response => response.json())
+                    .then(data => {
+
+                        if (data.response === "unknown aircraft") {
+                            document.getElementById("output").innerText = "Unknown aircraft";
+                            return;
+                        }
+
+                        if (!data.response || !data.response.aircraft) {
+                            document.getElementById("output").innerText = "Invalid input or aircraft not found.";
+                            return;
+                        }
+
+                        const aircraft = data.response.aircraft;
+                        
+                        let flag_code = "(" + aircraft.registered_owner_operator_flag_code + ")";
+                        if (aircraft.registered_owner_operator_flag_code == aircraft.icao_type) {flag_code = " ";}
+                        else if (aircraft.registered_owner_operator_flag_code == null) {flag_code = " ";}
+
+                        let alt_image = "Aircraft image not available";
+                        if (aircraft.registration === '36964') {alt_image = "Rest In Peace";}
+                        else if (aircraft.icao_type == "SC7") {alt_image = "Square plane";}
+
+                        const outputHTML = `
+                        <div class="text-center">
+                            <img src="${aircraft.url_photo}" alt="${alt_image}" id="image">
+                        </div>
+                        <div class="text-center">
+                            <h2>${aircraft.type}</h2>
+                            <h5>${aircraft.icao_type}</h5>
+                        </div>
+                        <h6><strong>Manufacturer:</strong> ${aircraft.manufacturer}</h6>
+                        <br>
+                        <h6><strong>Registration:</strong> ${aircraft.registration}</h6>
+                        <h6><strong>Mode S:</strong> ${aircraft.mode_s}</h6>
+                        <br>
+                        <h6><strong>Country:</strong> ${aircraft.registered_owner_country_name} (${aircraft.registered_owner_country_iso_name})</h6>
+                        <h6><strong>Owner:</strong> ${aircraft.registered_owner} ${flag_code}</h6>
+                        <br>
+                        `;
+            
+                        document.getElementById("output").innerHTML = outputHTML;
+                    })
+                    .catch(error => {
+                        document.getElementById("output").innerText = "Error: " + error;
+                    });
+                }
+
+                else if (selected.value === "flightroute") {
+                    
+                }
+                document.getElementById("output").scrollIntoView({ behavior: "smooth" });
+            }
         </script>
     </body>
 </html>
