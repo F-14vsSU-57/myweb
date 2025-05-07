@@ -29,7 +29,7 @@
             }
             h5 , h6 {
                 color: rgb(0, 0, 0);
-                background-color: rgba(255, 255, 255, 0.75);
+                background-color: rgba(255, 255, 255, 0.85);
                 margin-top: 10px;
                 padding-top: 5px;
                 padding-bottom: 7px;
@@ -44,6 +44,10 @@
                 margin-left: 5%;
                 padding: 1%;
             }
+            .flightroute {
+                width: 100%;
+            }
+
             body {
                 background-image: url("F-16\ \(Realn\'t\).png");
                 background-repeat: no-repeat;
@@ -59,7 +63,7 @@
                 margin-top: 10px;
             }
             .result {
-                background-color: rgba(255, 255, 255, 0.75);
+                background-color: rgba(255, 255, 255,0.9);
             }
             img {
                 width: 500px;
@@ -72,6 +76,36 @@
             }
             .search-bar-input {
                 padding-bottom: 10px;
+            }
+
+            .flightroute-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 20px;
+                padding: 100px;
+            }
+
+            .flightroute-box {
+                background-color: rgba(255, 255, 255, 0.85);
+                border-radius: 10px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 50px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                white-space: nowrap; /* Prevent wrapping inside the whole box */
+                flex: 1;
+            }
+
+            .text-center {
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            .plane-logo {
+                width: 180px;
+                height: auto;
             }
         </style>
         <script type="text/javascript" src="radio_button_handler.js"></script>
@@ -87,15 +121,15 @@
                     <!-- Radio buttons -->
                     <div class="d-flex flex-row">
                         <div>
-                            <input type="radio" name="select" value="aircraft" onclick="changePlaceholder('Mode S/Registration')" checked>
+                            <input type="radio" name="select" value="aircraft" onclick="changePlaceholderandsample('Mode S/Registration')" checked>
                             <label>Aircraft Search</label>
                         </div>
-                        <!-- <div>
-                            <input type="radio" name="select" value="flightroute" onclick="changePlaceholder('Callsign')">
+                        <div>
+                            <input type="radio" name="select" value="flightroute" onclick="changePlaceholderandsample('Callsign')">
                             <label>Flightroute Search</label>
                         </div>
-                        <div>
-                            <input type="radio" name="select" value="airline" onclick="changePlaceholder('Airline code')">
+                        <!-- <div>
+                            <input type="radio" name="select" value="airline" onclick="changePlaceholderandSample('Airline code')">
                             <label>Airline Search</label>
                         </div> -->
                     </div>
@@ -103,108 +137,13 @@
                     <!-- Search input and button -->
                     <div class="d-flex search-bar-input ">
                         <input type="text" name="input" id="user-input" class="form-control me-2" placeholder="Mode S/Registration">
-                        <input type="submit" value="Search" class="btn btn-success">
+                        <input type="button" value="Search" class="btn btn-success" onclick="search(null);">
                     </div>
                 </div>
             </form>
         </div>
-        <div id="output" class="result">
-            <form id="search-sample">
-                <div class="d-flex align-items-center flex-wrap gap-3 justify-content-center">
-                    <!-- Radio buttons -->
-                    <div class="d-flex flex-colum text-center">
-                        <div>
-                            Sample:
-                            <input type="radio" name="sample" value="36964" checked>
-                            <label>36964</label>
-                            <input type="radio" name="sample" value="69">
-                            <label>69</label>
-                            <input type="radio" name="sample" value="FA-69">
-                            <label>FA-69</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="sample" value="D-EATH">
-                            <label>D-EATH</label>
-                            <input type="radio" name="sample" value="F-BRUH">
-                            <label>F-BRUH</label>
-                            <input type="radio" name="sample" value="G-BEOL">
-                            <label>G-BEOL</label>
-                            <input type="submit" value="search">
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-        Database by adsbdb API
-        <script>
-            document.getElementById("search").addEventListener("submit", function(event) {
-                search(null, event);
-            });
-            document.getElementById("search-sample").addEventListener("submit", function(event) {
-                search(document.querySelector('input[name="sample"]:checked'), event);
-            });
-            function search(sample,event) {
-                event.preventDefault(); // prevent page reload
-                let query = document.getElementById("user-input").value;
-                if (sample != null) query = sample.value;
-                const selected = document.querySelector('input[name="select"]:checked');
-                console.log(selected);
-                if (selected.value === 'aircraft') {
-                    fetch("https://api.adsbdb.com/v0/aircraft/" + encodeURIComponent(query))
-                    .then(response => response.json())
-                    .then(data => {
-
-                        if (data.response === "unknown aircraft") {
-                            document.getElementById("output").innerText = "Unknown aircraft";
-                            return;
-                        }
-
-                        if (!data.response || !data.response.aircraft) {
-                            document.getElementById("output").innerText = "Invalid input or aircraft not found.";
-                            return;
-                        }
-
-                        const aircraft = data.response.aircraft;
-                        
-                        let flag_code = "(" + aircraft.registered_owner_operator_flag_code + ")";
-                        if (aircraft.registered_owner_operator_flag_code == aircraft.icao_type) {flag_code = " ";}
-                        else if (aircraft.registered_owner_operator_flag_code == null) {flag_code = " ";}
-
-                        let alt_image = "Aircraft image not available";
-                        if (aircraft.registration === '36964') {alt_image = "Rest In Peace";}
-                        else if (aircraft.icao_type == "SC7") {alt_image = "Square plane";}
-
-                        const outputHTML = `
-                        <div class="text-center">
-                            <img src="${aircraft.url_photo}" alt="${alt_image}" id="image">
-                        </div>
-                        <div class="text-center">
-                            <h2>${aircraft.type}</h2>
-                            <h5>${aircraft.icao_type}</h5>
-                        </div>
-                        <h6><strong>Manufacturer:</strong> ${aircraft.manufacturer}</h6>
-                        <br>
-                        <h6><strong>Registration:</strong> ${aircraft.registration}</h6>
-                        <h6><strong>Mode S:</strong> ${aircraft.mode_s}</h6>
-                        <br>
-                        <h6><strong>Country:</strong> ${aircraft.registered_owner_country_name} (${aircraft.registered_owner_country_iso_name})</h6>
-                        <h6><strong>Owner:</strong> ${aircraft.registered_owner} ${flag_code}</h6>
-                        <br>
-                        `;
-            
-                        document.getElementById("output").innerHTML = outputHTML;
-                    })
-                    .catch(error => {
-                        document.getElementById("output").innerText = "Error: " + error;
-                    });
-                }
-
-                else if (selected.value === "flightroute") {
-                    
-                }
-                document.getElementById("output").scrollIntoView({ behavior: "smooth" });
-            }
-        </script>
+        <div id="output" class="result"></div>
+        <script type="text/javascript" src="search.js"></script>
     </body>
 </html>
 
