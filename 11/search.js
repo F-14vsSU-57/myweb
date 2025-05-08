@@ -54,13 +54,8 @@ function search_flightroute(query) {
         .then(response => response.json())
         .then(data => {
 
-            if (data.response === "unknown aircraft") {
-                document.getElementById("output").innerText = "Unknown aircraft";
-                return;
-            }
-
             if (!data.response || !data.response.flightroute) {
-                document.getElementById("output").innerText = "Invalid input or aircraft not found.";
+                document.getElementById("output").innerText = "Invalid input or flightroute not found.";
                 return;
             }
 
@@ -127,11 +122,6 @@ function search_airline(query) {
         .then(response => response.json())
         .then(data => {
 
-            if (data.response == "invalid airline:") {
-                document.getElementById("output").innerText = "Unknown Airline";
-                return;
-            }
-
             const airline = data.response[0];
             let img = " "
             // if (airline.icao == "RYR") {
@@ -142,6 +132,14 @@ function search_airline(query) {
             // }
 
             console.log(airline);
+
+            if (!airline.name) {
+                document.getElementById("output").innerText = "Invalid input or airline not found.";
+                return;
+            }
+
+            if (airline.iata_code) {airline.iata_code = "---";}
+            if (airline.icao_code) {airline.icao_code = "---";}
 
             const outputHTML = `
             ${img}
