@@ -52,6 +52,33 @@ function changePlaceholderandsample(newText) {
                     </div>
                 </div>
             </form>`;
+        const airline_sample = `
+        <form id="search-sample">
+            <div class="d-flex align-items-center flex-wrap gap-3 justify-content-center">
+                <!-- Radio buttons -->
+                <div class="d-flex flex-colum text-center">
+                    <div>
+                        Sample:
+                        <input type="radio" name="sample" value="RYR" checked>
+                        <label>RYR</label>
+                        <input type="radio" name="sample" value="RYA">
+                        <label>RYA</label>
+                        <input type="radio" name="sample" value="THA">
+                        <label>THA</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="sample" value="">
+                        <label>AMC306</label>
+                        <input type="radio" name="sample" value="CND814">
+                        <label>CND814</label>
+                        <input type="radio" name="sample" value="CND814">
+                        <label>CND814</label>
+                        <input type="button" value="search" onclick="search_sample();">
+                    </div>
+                </div>
+            </div>
+        </form>`;
     if (newText === "Mode S/Registration") {document.getElementById("output").innerHTML = aircraft_sample;}
     else if (newText === "Callsign") {document.getElementById("output").innerHTML = flightroute_sample;}
+    else if (newText === "IATA/ICAO code") {document.getElementById("output").innerHTML = null;}
 }
